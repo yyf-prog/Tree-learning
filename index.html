@@ -16,14 +16,18 @@
             display: flex;
             flex-direction: column;
             align-items: center;
-            justify-content: center;
-            min-height: 100vh;
-            padding: 20px;
+            padding: 40px 20px;
         }
         h1 {
             color: #24292f;
             margin-bottom: 30px;
             font-size: 24px;
+        }
+        h2 {
+            font-size: 18px;
+            color: #333;
+            margin: 10px 0;
+            padding-left: 10px;
         }
         .video-container {
             width: 100%;
@@ -31,6 +35,7 @@
             border-radius: 12px;
             overflow: hidden;
             box-shadow: 0 2px 12px rgba(0,0,0,0.1);
+            margin-bottom: 30px;
         }
         video {
             width: 100%;
@@ -40,22 +45,28 @@
 </head>
 <body>
     <h1>Tree-learning videos</h1>
+
     <div class="video-container">
         <h2>Tree-learning actions</h2>
         <video controls>
             <source src="Tree-learning.mp4" type="video/mp4">
+            你的浏览器不支持视频播放
         </video>
     </div>
+
     <div class="video-container">
         <h2>Tree-learning game</h2>
         <video controls>
             <source src="auto game.mp4" type="video/mp4">
+            你的浏览器不支持视频播放
         </video>
     </div>
+
     <div class="video-container">
         <h2>Tree-learning auto navigation</h2>
         <video controls>
             <source src="auto navigation.mp4" type="video/mp4">
+            你的浏览器不支持视频播放
         </video>
     </div>
 </body>
