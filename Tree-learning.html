@@ -23,6 +23,7 @@
         h1 {
             color: #24292f;
             margin-bottom: 30px;
+            font-size: 24px;
         }
         .video-container {
             width: 100%;
@@ -31,18 +32,18 @@
             overflow: hidden;
             box-shadow: 0 2px 12px rgba(0,0,0,0.1);
         }
-        iframe {
+        video {
             width: 100%;
-            height: 500px;
-            border: none;
+            display: block;
         }
     </style>
 </head>
 <body>
     <h1>我的论文讲解视频</h1>
     <div class="video-container">
-        <!-- 这里替换成你的B站视频链接 -->
-        <iframe src="https://player.bilibili.com/player.html?bvid=你的视频BV号" allowfullscreen></iframe>
+        <video controls>
+            <source src="111111111.mp4" type="video/mp4">
+        </video>
     </div>
 </body>
 </html>
