@@ -3,71 +3,115 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tree-Learning 视频</title>
+    <title>Tree-Learning | 项目演示</title>
     <style>
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
+
         body {
-            background: #f6f8fa;
-            font-family: -apple-system, BlinkMacSystemFont, sans-serif;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+            background-color: #f5f7fa;
+            color: #333;
+            line-height: 1.6;
             padding: 40px 20px;
         }
-        h1 {
-            color: #24292f;
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 50px;
+            padding-bottom: 30px;
+            border-bottom: 1px solid #e0e0e0;
+        }
+
+        header h1 {
+            font-size: 32px;
+            color: #2c3e50;
+            margin-bottom: 10px;
+        }
+
+        header p {
+            font-size: 16px;
+            color: #7f8c8d;
+        }
+
+        .video-section {
+            background: #ffffff;
+            border-radius: 16px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.06);
+            padding: 24px;
             margin-bottom: 30px;
-            font-size: 24px;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
         }
-        h2 {
-            font-size: 18px;
-            color: #333;
-            margin: 10px 0;
-            padding-left: 10px;
+
+        .video-section:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.1);
         }
-        .video-container {
-            width: 100%;
-            max-width: 900px;
-            border-radius: 12px;
-            overflow: hidden;
-            box-shadow: 0 2px 12px rgba(0,0,0,0.1);
-            margin-bottom: 30px;
+
+        .video-section h2 {
+            font-size: 20px;
+            color: #2c3e50;
+            margin-bottom: 16px;
+            padding-left: 8px;
+            border-left: 4px solid #3498db;
         }
+
         video {
             width: 100%;
-            display: block;
+            border-radius: 10px;
+            background: #000;
+        }
+
+        footer {
+            text-align: center;
+            margin-top: 60px;
+            color: #95a5a6;
+            font-size: 14px;
         }
     </style>
 </head>
 <body>
-    <h1>Tree-learning videos</h1>
+    <div class="container">
+        <header>
+            <h1>Tree-Learning Project Demo</h1>
+            <p>基于树结构学习的机器人控制与导航演示</p>
+        </header>
 
-    <div class="video-container">
-        <h2>Tree-learning actions</h2>
-        <video controls>
-            <source src="Tree-learning.mp4" type="video/mp4">
-            你的浏览器不支持视频播放
-        </video>
-    </div>
+        <div class="video-section">
+            <h2>1. 动作学习演示</h2>
+            <video controls>
+                <source src="Tree-learning.mp4" type="video/mp4">
+                你的浏览器不支持视频播放，请升级浏览器。
+            </video>
+        </div>
 
-    <div class="video-container">
-        <h2>Tree-learning game</h2>
-        <video controls>
-            <source src="auto game.mp4" type="video/mp4">
-            你的浏览器不支持视频播放
-        </video>
-    </div>
+        <div class="video-section">
+            <h2>2. 交互任务演示</h2>
+            <video controls>
+                <source src="auto game.mp4" type="video/mp4">
+                你的浏览器不支持视频播放，请升级浏览器。
+            </video>
+        </div>
 
-    <div class="video-container">
-        <h2>Tree-learning auto navigation</h2>
-        <video controls>
-            <source src="auto navigation.mp4" type="video/mp4">
-            你的浏览器不支持视频播放
-        </video>
+        <div class="video-section">
+            <h2>3. 自主导航演示</h2>
+            <video controls>
+                <source src="auto navigation.mp4" type="video/mp4">
+                你的浏览器不支持视频播放，请升级浏览器。
+            </video>
+        </div>
+
+        <footer>
+            © 2025 Tree-Learning Project | Hosted on GitHub Pages
+        </footer>
     </div>
 </body>
 </html>
