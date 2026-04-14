@@ -3,8 +3,18 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tree-Learning | 项目演示</title>
+    <title>Tree-Learning | Project Page</title>
+    <!-- 引入 Google 字体提高质感 -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
     <style>
+        :root {
+            --primary-color: #2563eb;
+            --text-dark: #1e293b;
+            --text-light: #64748b;
+            --bg-gray: #f8fafc;
+            --card-bg: #ffffff;
+        }
+
         * {
             margin: 0;
             padding: 0;
@@ -12,168 +22,237 @@
         }
 
         body {
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-            background-color: #f5f7fa;
-            color: #333;
+            font-family: 'Inter', -apple-system, sans-serif;
+            background-color: var(--bg-gray);
+            color: var(--text-dark);
             line-height: 1.6;
-            padding: 40px 20px;
         }
 
         .container {
-            max-width: 1000px;
+            max-width: 1100px;
             margin: 0 auto;
+            padding: 60px 20px;
         }
 
+        /* Header 部分：标题和按钮 */
         header {
             text-align: center;
-            margin-bottom: 50px;
-            padding-bottom: 30px;
-            border-bottom: 1px solid #e0e0e0;
+            margin-bottom: 60px;
         }
 
         header h1 {
-            font-size: 32px;
-            color: #2c3e50;
-            margin-bottom: 10px;
+            font-size: 3rem;
+            font-weight: 800;
+            margin-bottom: 20px;
+            letter-spacing: -0.02em;
+            background: linear-gradient(to right, #1e293b, #2563eb);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
         }
 
-        header p {
-            font-size: 16px;
-            color: #7f8c8d;
+        .links {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-top: 30px;
         }
 
-        .video-section {
-            background: #ffffff;
-            border-radius: 16px;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.06);
-            padding: 24px;
+        .btn {
+            padding: 10px 24px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 14px;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .btn-dark { background: #1e293b; color: white; }
+        .btn-dark:hover { background: #000; transform: translateY(-2px); }
+
+        /* 核心部分标题 */
+        section {
+            margin-bottom: 80px;
+        }
+
+        .section-title {
+            font-size: 1.8rem;
+            font-weight: 700;
             margin-bottom: 30px;
-            transition: transform 0.2s ease, box-shadow 0.2s ease;
+            text-align: center;
+            position: relative;
         }
 
-        .video-section:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 50px;
+            height: 4px;
+            background: var(--primary-color);
+            margin: 10px auto;
+            border-radius: 2px;
         }
 
-        .video-section h2 {
-            font-size: 20px;
-            color: #2c3e50;
-            margin-bottom: 16px;
-            padding-left: 8px;
-            border-left: 4px solid #3498db;
+        /* 视频网格布局 (关键改进) */
+        .video-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 20px;
         }
 
-        video {
+        .video-card {
+            background: var(--card-bg);
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .video-card:hover {
+            transform: scale(1.03);
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+        }
+
+        .video-card video {
             width: 100%;
-            border-radius: 10px;
+            display: block;
+            aspect-ratio: 16 / 9;
+            object-fit: cover;
             background: #000;
+        }
+
+        .video-info {
+            padding: 12px;
+            text-align: center;
+            font-weight: 600;
+            font-size: 0.95rem;
+            color: var(--text-dark);
+            border-top: 1px solid #f1f5f9;
+        }
+
+        /* 大型全宽展示视频 */
+        .main-video {
+            width: 100%;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+            margin-bottom: 20px;
         }
 
         footer {
             text-align: center;
-            margin-top: 60px;
-            color: #95a5a6;
+            padding-top: 40px;
+            border-top: 1px solid #e2e8f0;
+            color: var(--text-light);
             font-size: 14px;
+        }
+
+        /* 响应式调整 */
+        @media (max-width: 768px) {
+            header h1 { font-size: 2rem; }
+            .video-grid { grid-template-columns: 1fr 1fr; }
         }
     </style>
 </head>
 <body>
     <div class="container">
+        <!-- 头部 -->
         <header>
-            <h1>Tree-Learning Project Demo</h1>
-            <p>Tree-learning videos</p>
+            <h1>Tree-Learning: Learning Complex Skills</h1>
+            <p style="font-size: 1.2rem; color: var(--text-light);">Reinforcement Learning for Agile Character Animation</p>
+            
+            <div class="links">
+                <a href="#" class="btn btn-dark">📄 Paper (Coming soon)</a>
+                <a href="#" class="btn btn-dark">💻 GitHub Code</a>
+                <a href="#" class="btn btn-dark">🎬 Full Video</a>
+            </div>
         </header>
 
-        <div class="video-section">
-            <h2>1. Tree-learning actions</h2>
-            <video controls>
-                <source src="Tree-learning.mp4" type="video/mp4">
-                你的浏览器不支持视频播放，请升级浏览器。
-            </video>
-            <h3>1.1 Walk</h3>
-            <video controls>
-                <source src="moe0.webm" type="video/mp4">
-                你的浏览器不支持视频播放，请升级浏览器。
-            </video>
-            <h3>1.2 Run</h3>
-            <video controls>
-                <source src="moe1.webm" type="video/webm">
-                你的浏览器不支持视频播放，请升级浏览器。
-            </video>
-            <h3>1.3 Climb</h3>
-            <video controls>
-                <source src="moe2.webm" type="video/webm">
-                你的浏览器不支持视频播放，请升级浏览器。
-            </video>
-            <h3>1.4 Squat</h3>
-            <video controls>
-                <source src="moe3.webm" type="video/webm">
-                你的浏览器不支持视频播放，请升级浏览器。
-            </video>
-            </video>
-            <h3>1.5 Jump</h3>
-            <video controls>
-                <source src="moe4.mp4" type="video/mp4">
-                你的浏览器不支持视频播放，请升级浏览器。
-            </video>
-            <h3>1.6 One-leg stand</h3>
-            <video controls>
-                <source src="moe5.mp4" type="video/mp4">
-                你的浏览器不支持视频播放，请升级浏览器。
-            </video>
-            <h3>1.7 Kick</h3>
-            <video controls>
-                <source src="moe6.mp4" type="video/mp4">
-                你的浏览器不支持视频播放，请升级浏览器。
-            </video>
-            <h3>1.8 Down</h3>
-            <video controls>
-                <source src="moe7.webm" type="video/webm">
-                你的浏览器不支持视频播放，请升级浏览器。
-            </video>
-        </div>
-            </video>
-            <h3>1.9 Push up</h3>
-            <video controls>
-                <source src="moe8.mp4" type="video/mp4">
-                你的浏览器不支持视频播放，请升级浏览器。
-            </video>
-            <h3>1.10 Crawl</h3>
-            <video controls>
-                <source src="moe9.mp4" type="video/mp4">
-                你的浏览器不支持视频播放，请升级浏览器。
-            </video>
-            <h3>1.11 Stand up</h3>
-            <video controls>
-                <source src="moe10.mp4" type="video/mp4">
-                你的浏览器不支持视频播放，请升级浏览器。
-            </video>
-        </div>
-        <div class="video-section">
-            <h2>2. Tree-learning auto game</h2>
-            <video controls>
-                <source src="auto game.mp4" type="video/mp4">
-                你的浏览器不支持视频播放，请升级浏览器。
-            </video>
-        </div>
-        <div class="video-section">
-            <h2>2. Tree-learning manual game</h2>
-            <video controls>
-                <source src="manual game.mp4" type="video/mp4">
-                你的浏览器不支持视频播放，请升级浏览器。
-            </video>
-        </div>
-        <div class="video-section">
-            <h2>3. Tree-learning auto navigation</h2>
-            <video controls>
-                <source src="auto navigation.mp4" type="video/mp4">
-                你的浏览器不支持视频播放，请升级浏览器。
-            </video>
-        </div>
+        <!-- 1. 概览视频 -->
+        <section>
+            <h2 class="section-title">Project Overview</h2>
+            <div class="main-video">
+                <video controls autoplay muted loop>
+                    <source src="Tree-learning.mp4" type="video/mp4">
+                </video>
+            </div>
+        </section>
+
+        <!-- 2. 动作技能网格 -->
+        <section>
+            <h2 class="section-title">Action Library</h2>
+            <div class="video-grid">
+                <!-- 循环这些卡片 -->
+                <div class="video-card">
+                    <video playsinline autoplay muted loop><source src="moe0.webm" type="video/webm"></video>
+                    <div class="video-info">1.1 Walk</div>
+                </div>
+                <div class="video-card">
+                    <video playsinline autoplay muted loop><source src="moe1.webm" type="video/webm"></video>
+                    <div class="video-info">1.2 Run</div>
+                </div>
+                <div class="video-card">
+                    <video playsinline autoplay muted loop><source src="moe2.webm" type="video/webm"></video>
+                    <div class="video-info">1.3 Climb</div>
+                </div>
+                <div class="video-card">
+                    <video playsinline autoplay muted loop><source src="moe3.webm" type="video/webm"></video>
+                    <div class="video-info">1.4 Squat</div>
+                </div>
+                <div class="video-card">
+                    <video playsinline autoplay muted loop><source src="moe4.mp4" type="video/mp4"></video>
+                    <div class="video-info">1.5 Jump</div>
+                </div>
+                <div class="video-card">
+                    <video playsinline autoplay muted loop><source src="moe5.mp4" type="video/mp4"></video>
+                    <div class="video-info">1.6 One-leg stand</div>
+                </div>
+                <div class="video-card">
+                    <video playsinline autoplay muted loop><source src="moe6.mp4" type="video/mp4"></video>
+                    <div class="video-info">1.7 Kick</div>
+                </div>
+                <div class="video-card">
+                    <video playsinline autoplay muted loop><source src="moe7.webm" type="video/webm"></video>
+                    <div class="video-info">1.8 Down</div>
+                </div>
+                <div class="video-card">
+                    <video playsinline autoplay muted loop><source src="moe8.mp4" type="video/mp4"></video>
+                    <div class="video-info">1.9 Push up</div>
+                </div>
+                <div class="video-card">
+                    <video playsinline autoplay muted loop><source src="moe9.mp4" type="video/mp4"></video>
+                    <div class="video-info">1.10 Crawl</div>
+                </div>
+                <div class="video-card">
+                    <video playsinline autoplay muted loop><source src="moe10.mp4" type="video/mp4"></video>
+                    <div class="video-info">1.11 Stand up</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 3. 应用场景 -->
+        <section>
+            <h2 class="section-title">Downstream Tasks</h2>
+            <div class="video-grid">
+                <div class="video-card" style="grid-column: span 1;">
+                    <video controls muted loop><source src="auto game.mp4" type="video/mp4"></video>
+                    <div class="video-info">Autonomous Game Agent</div>
+                </div>
+                <div class="video-card">
+                    <video controls muted loop><source src="manual game.mp4" type="video/mp4"></video>
+                    <div class="video-info">Manual Control Mode</div>
+                </div>
+                <div class="video-card">
+                    <video controls muted loop><source src="auto navigation.mp4" type="video/mp4"></video>
+                    <div class="video-info">Automatic Navigation</div>
+                </div>
+            </div>
+        </section>
 
         <footer>
-            © 2026 Tree-Learning Project | Hosted on GitHub Pages
+            © 2024-2026 Tree-Learning Project Team | Research Purposes Only
         </footer>
     </div>
 </body>
