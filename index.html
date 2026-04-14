@@ -82,6 +82,7 @@
             display: flex;
             justify-content: center;
             gap: 15px;
+            flex-wrap: wrap;
         }
 
         .btn {
@@ -182,23 +183,8 @@
             width: 100%;
             display: block;
             background: #000;
-            min-height: 120px;
-        }
-        
-        /* 为视频无法加载时显示友好提示 */
-        video:not([src]):not([src^="http"]),
-        video[src=""] {
-            position: relative;
-            background: #e8e8ed;
-            min-height: 180px;
-        }
-        
-        /* 自定义错误提示样式 - 使用伪元素无法直接修改视频内容，改用JS兜底，但保留CSS干净 */
-        .video-card {
-            position: relative;
         }
 
-        /* 视频标签文字样式 - 确保首字母大写，其他字母保持原有大小写 (已经通过直接修改HTML标签内容实现) */
         .video-label {
             padding: 14px;
             text-align: center;
@@ -206,8 +192,6 @@
             font-weight: 700;
             letter-spacing: 0.03em;
             color: #515154;
-            /* 确保没有任何 text-transform 强制全大写 */
-            text-transform: none;
         }
 
         /* --- 特定布局控制 --- */
@@ -251,22 +235,6 @@
             .row-center .video-card { width: 100%; }
             .row-2-grid { grid-template-columns: 1fr; }
         }
-        
-        /* 视频加载失败的视觉反馈 */
-        .video-error-fallback {
-            background: #2c2c2e;
-            color: white;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            aspect-ratio: 16 / 9;
-            width: 100%;
-            font-size: 14px;
-            font-family: 'Inter', sans-serif;
-            text-align: center;
-            padding: 20px;
-            box-sizing: border-box;
-        }
     </style>
 </head>
 <body>
@@ -291,9 +259,8 @@
     <!-- 视频+摘要 并排 -->
     <div class="hero-section">
         <div class="hero-video-container">
-            <video controls>
+            <video controls preload="auto">
                 <source src="Tree-learning.mp4" type="video/mp4">
-                Your browser does not support the video tag.
             </video>
         </div>
         <div class="abstract-box">
@@ -309,77 +276,56 @@
 
     <div class="row-center">
         <div class="video-card">
-            <video playsinline autoplay muted loop>
+            <video playsinline autoplay muted loop preload="auto">
                 <source src="moe0.mp4" type="video/mp4">
             </video>
-            <!-- 修正: Walk 首字母大写, 其余小写 (保持首字母大写风格) -->
             <div class="video-label">0 Walk</div>
         </div>
     </div>
 
     <div class="row-5-grid">
         <div class="video-card">
-            <video playsinline autoplay muted loop>
-                <source src="moe1.mp4" type="video/mp4">
-            </video>
+            <video playsinline autoplay muted loop preload="auto"><source src="moe1.mp4" type="video/mp4"></video>
             <div class="video-label">1.1 Run</div>
         </div>
         <div class="video-card">
-            <video playsinline autoplay muted loop>
-                <source src="moe2.mp4" type="video/mp4">
-            </video>
+            <video playsinline autoplay muted loop preload="auto"><source src="moe2.mp4" type="video/mp4"></video>
             <div class="video-label">1.2 Climb</div>
         </div>
         <div class="video-card">
-            <video playsinline autoplay muted loop>
-                <source src="moe3.mp4" type="video/mp4">
-            </video>
+            <video playsinline autoplay muted loop preload="auto"><source src="moe3.mp4" type="video/mp4"></video>
             <div class="video-label">1.3 Squat</div>
         </div>
         <div class="video-card">
-            <video playsinline autoplay muted loop>
-                <source src="moe4.mp4" type="video/mp4">
-            </video>
+            <video playsinline autoplay muted loop preload="auto"><source src="moe4.mp4" type="video/mp4"></video>
             <div class="video-label">1.4 Jump</div>
         </div>
         <div class="video-card">
-            <video playsinline autoplay muted loop>
-                <source src="moe5.mp4" type="video/mp4">
-            </video>
-            <div class="video-label">1.5 One-leg stand</div>
+            <video playsinline autoplay muted loop preload="auto"><source src="moe5.mp4" type="video/mp4"></video>
+            <div class="video-label">1.5 One-Leg Stand</div>
         </div>
     </div>
 
     <div class="row-5-grid">
         <div class="video-card">
-            <video playsinline autoplay muted loop>
-                <source src="moe6.mp4" type="video/mp4">
-            </video>
+            <video playsinline autoplay muted loop preload="auto"><source src="moe6.mp4" type="video/mp4"></video>
             <div class="video-label">2.1 Kick</div>
         </div>
         <div class="video-card">
-            <video playsinline autoplay muted loop>
-                <source src="moe7.mp4" type="video/mp4">
-            </video>
+            <video playsinline autoplay muted loop preload="auto"><source src="moe7.mp4" type="video/mp4"></video>
             <div class="video-label">2.2 Down</div>
         </div>
         <div class="video-card">
-            <video playsinline autoplay muted loop>
-                <source src="moe8.mp4" type="video/mp4">
-            </video>
-            <div class="video-label">2.3 Push up</div>
+            <video playsinline autoplay muted loop preload="auto"><source src="moe8.mp4" type="video/mp4"></video>
+            <div class="video-label">2.3 Push Up</div>
         </div>
         <div class="video-card">
-            <video playsinline autoplay muted loop>
-                <source src="moe9.mp4" type="video/mp4">
-            </video>
+            <video playsinline autoplay muted loop preload="auto"><source src="moe9.mp4" type="video/mp4"></video>
             <div class="video-label">2.4 Crawl</div>
         </div>
         <div class="video-card">
-            <video playsinline autoplay muted loop>
-                <source src="moe10.mp4" type="video/mp4">
-            </video>
-            <div class="video-label">2.5 Stand up</div>
+            <video playsinline autoplay muted loop preload="auto"><source src="moe10.mp4" type="video/mp4"></video>
+            <div class="video-label">2.5 Stand Up</div>
         </div>
     </div>
 
@@ -388,15 +334,11 @@
 
     <div class="row-2-grid">
         <div class="video-card">
-            <video controls muted loop>
-                <source src="video1.mp4" type="video/mp4">
-            </video>
+            <video controls muted loop preload="auto"><source src="video1.mp4" type="video/mp4"></video>
             <div class="video-label">Super Mario Game</div>
         </div>
         <div class="video-card">
-            <video controls muted loop>
-                <source src="video3.mp4" type="video/mp4">
-            </video>
+            <video controls muted loop preload="auto"><source src="video3.mp4" type="video/mp4"></video>
             <div class="video-label">Chinese Garden Navigation</div>
         </div>
     </div>
@@ -406,146 +348,5 @@
     </footer>
 </div>
 
-<!-- 轻量级脚本：处理视频加载失败时显示友好占位符，并且不会影响原有布局。同时确保没有任何全大写转换 -->
-<script>
-    (function() {
-        // 让所有视频标签在加载错误时显示一个优雅的fallback提示，避免空白或者破损图标
-        // 同时也保持原有尺寸比例不崩塌。
-        const videos = document.querySelectorAll('video');
-        
-        videos.forEach(video => {
-            // 标记是否已经添加fallback，避免重复操作
-            let fallbackAdded = false;
-            
-            const handleError = () => {
-                if (fallbackAdded) return;
-                // 防止无限循环：如果src本身就无效，我们展示占位信息
-                const sources = video.querySelectorAll('source');
-                let hasValidSource = false;
-                if (sources.length > 0) {
-                    for (let src of sources) {
-                        if (src.src && src.src.trim() !== '') {
-                            hasValidSource = true;
-                            break;
-                        }
-                    }
-                } else if (video.src && video.src.trim() !== '') {
-                    hasValidSource = true;
-                }
-                
-                // 如果已经显示过错误或者无法加载
-                if (video.parentNode && !fallbackAdded) {
-                    fallbackAdded = true;
-                    // 保存原始宽高比例样式
-                    const computedStyle = window.getComputedStyle(video);
-                    const originalAspect = video.style.aspectRatio || computedStyle.aspectRatio;
-                    
-                    // 创建占位容器但不破坏视频卡片结构
-                    const parent = video.parentNode;
-                    const fallbackDiv = document.createElement('div');
-                    fallbackDiv.className = 'video-error-fallback';
-                    // 尝试从video-label中获取文本作为提示内容
-                    let labelText = '';
-                    const card = video.closest('.video-card');
-                    if (card) {
-                        const label = card.querySelector('.video-label');
-                        if (label) {
-                            labelText = label.innerText.trim();
-                        }
-                    }
-                    // 定制更友好的信息，显示视频无法加载但保留标签信息
-                    fallbackDiv.innerHTML = `⚠️ Video not available<br><span style="font-size:12px; opacity:0.7;">${labelText || 'Unable to load'}</span>`;
-                    fallbackDiv.style.fontSize = '13px';
-                    fallbackDiv.style.fontWeight = '500';
-                    
-                    // 隐藏视频并插入fallback
-                    video.style.display = 'none';
-                    // 确保父级相对定位
-                    if (getComputedStyle(parent).position === 'static') {
-                        parent.style.position = 'relative';
-                    }
-                    parent.appendChild(fallbackDiv);
-                    // 给fallback同样宽度
-                    fallbackDiv.style.width = '100%';
-                    fallbackDiv.style.aspectRatio = '16 / 9';
-                }
-            };
-            
-            // 监听错误事件
-            video.addEventListener('error', handleError);
-            // 对于已经加载失败的情况（例如src为空或网络错误），手动触发一次检测
-            if (video.readyState === 0 && (!video.src || video.src === '')) {
-                // 延迟检测确保资源加载尝试结束
-                setTimeout(() => {
-                    if (video.networkState === HTMLMediaElement.NETWORK_NO_SOURCE || 
-                        (video.error !== null)) {
-                        handleError();
-                    }
-                }, 100);
-            }
-            
-            // 额外: 针对source标签错误，再次确保捕获
-            const sourcesList = video.querySelectorAll('source');
-            sourcesList.forEach(source => {
-                source.addEventListener('error', (e) => {
-                    handleError();
-                });
-            });
-            
-            // 如果视频有src属性但无source，检查
-            if (video.src && video.src !== '') {
-                // 如果请求后失败, error事件会捕获
-            } else if (sourcesList.length === 0) {
-                // 既无source也无src，标记为错误
-                setTimeout(() => {
-                    if (video.readyState === 0) handleError();
-                }, 50);
-            }
-        });
-        
-        // 额外确保所有 .video-label 的文本样式没有任何强制大写，保留原始字母大小写
-        // 并且针对“Walk”等确保显示为首字母大写（HTML已经写好Walk，无需额外动作但防止外部样式影响）
-        const labels = document.querySelectorAll('.video-label');
-        labels.forEach(label => {
-            // 保证没有任何 text-transform 样式干扰，内联样式覆盖保险
-            label.style.textTransform = 'none';
-            // 如果原内容不小心出现全大写的情况，可以智能转换，但是为了尊重用户修改意愿，不自动覆盖。
-            // 但是用户之前问为什么有的全大写，我们可以手动校正已知词条，但不对用户原始内容做强制。
-            // 由于我们在html里已经写成正确的大小写形式（Walk, Run, Climb 等），所以无需JS矫正。
-            // 但额外防止某些意外情况: 如果内容全大写且长度小于20，转为首字母大写其他小写? 为了保险，不对用户已设置内容做暴力更改。
-            // 仅提供一个控制台友好提示：不做自动覆盖。
-        });
-        
-        // 如果因为某些视频尺寸不对导致黑边或变形，但这不是主要问题。尺寸由CSS aspect-ratio自然控制
-        // 确保所有视频卡片内视频保持比例。
-        const styleFix = document.createElement('style');
-        styleFix.textContent = `
-            video {
-                aspect-ratio: 16 / 9;
-                object-fit: cover;
-            }
-            .video-error-fallback {
-                background: #2c2c2e;
-                color: #f5f5f7;
-                display: flex;
-                align-items: center;
-                justify-content: center;
-                border-radius: 0px;
-                font-family: 'Inter', sans-serif;
-                flex-direction: column;
-                gap: 6px;
-                text-align: center;
-            }
-            .video-card {
-                display: flex;
-                flex-direction: column;
-            }
-            .video-card video:only-child, .video-card .video-error-fallback {
-                border-radius: 16px 16px 0 0;
-            }
-        `;
-        document.head.appendChild(styleFix);
-    })();
-</script>
 </body>
 </html>
