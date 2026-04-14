@@ -111,8 +111,16 @@
             display: grid;
             grid-template-columns: 1fr 1fr;
             gap: 40px;
-            align-items: center;
+            align-items: start; /* 👈 关键：顶部对齐 */
             margin-bottom: 80px;
+        }
+
+        .hero-video-wrapper h2 {
+            font-size: 36px;
+            font-weight: 800;
+            letter-spacing: -0.02em;
+            margin-bottom: 20px;
+            color: var(--text-main);
         }
 
         .hero-video-container {
@@ -258,20 +266,20 @@
 
     <!-- 视频+摘要 并排 -->
     <div class="hero-section">
-    <!-- 左侧：Video 区域 -->
-    <div class="hero-video-wrapper">
-        <h2 class="section-title">Video</h2>
-        <div class="hero-video-container">
-            <video controls preload="auto">
-                <source src="Tree-learning.mp4" type="video/mp4">
-            </video>
+        <!-- 左侧：Video 区域 -->
+        <div class="hero-video-wrapper">
+            <h2>Video</h2>
+            <div class="hero-video-container">
+                <video controls preload="auto">
+                    <source src="Tree-learning.mp4" type="video/mp4">
+                </video>
+            </div>
         </div>
-    </div>
 
-    <!-- 右侧：Abstract 区域 -->
-    <div class="abstract-box">
-        <h2>Abstract</h2>
-        <div class="abstract-text">
+        <!-- 右侧：Abstract 区域 -->
+        <div class="abstract-box">
+            <h2>Abstract</h2>
+            <div class="abstract-text">
                 As reinforcement learning for humanoid robots evolves from single-task to multi-skill paradigms, efficiently expanding new skills while avoiding catastrophic forgetting has become a key challenge in embodied intelligence. Existing approaches either rely on complex topology adjustments in Mixture-of-Experts (MoE) models or require training extremely large-scale models, making lightweight deployment difficult. To address this, we propose <strong>Tree Learning</strong>, a multi-skill continual learning framework for humanoid robots. The framework adopts a root-branch hierarchical parameter inheritance mechanism, providing motion priors for branch skills through parameter reuse to fundamentally prevent catastrophic forgetting. A multi-modal feedforward adaptation mechanism combining phase modulation and interpolation is designed to support both periodic and aperiodic motions. A task-level reward shaping strategy is also proposed to accelerate skill convergence. Unity-based simulation experiments show that, in contrast to simultaneous multi-task training, Tree Learning achieves higher rewards across various representative locomotion skills while maintaining a 100% skill retention rate, enabling seamless multi-skill switching and real-time interactive control.
             </div>
         </div>
@@ -318,7 +326,7 @@
             <div class="video-label">2.1 Kick</div>
         </div>
         <div class="video-card">
-            <video playsinline autoplay muted loop preload="auto"><source src="moe7.wemb" type="video/wemb"></video>
+            <video playsinline autoplay muted loop preload="auto"><source src="moe7.webm" type="video/webm"></video>
             <div class="video-label">2.2 Down</div>
         </div>
         <div class="video-card">
