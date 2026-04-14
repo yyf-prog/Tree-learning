@@ -3,10 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tree-Learning | Project Page</title>
+    <title>Tree-Learning Dynamic Growth</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <style>
         :root {
+            --tree-color: #007AFF;
+            --line-width: 3px;
             --primary-color: #007AFF;
             --title-gradient: linear-gradient(180deg, #1d1d1f 0%, #434343 100%);
             --text-main: #1d1d1f;
@@ -22,14 +24,89 @@
         }
 
         body {
-            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-            background-color: var(--bg-color);
-            color: var(--text-main);
+            background-color: #ffffff;
+            font-family: 'Inter', sans-serif;
+            overflow-x: hidden;
             line-height: 1.6;
             -webkit-font-smoothing: antialiased;
             letter-spacing: -0.01em;
         }
 
+        /* 树生长动画样式 */
+        .tree-container {
+            position: relative;
+            width: 100vw;
+            height: 1200px;
+            margin-top: 50px;
+            display: flex;
+            justify-content: center;
+        }
+
+        .branch {
+            position: absolute;
+            fill: none;
+            stroke: var(--tree-color);
+            stroke-width: var(--line-width);
+            stroke-linecap: round;
+            stroke-dasharray: 1000;
+            stroke-dashoffset: 1000;
+            transition: stroke-dashoffset 2s ease-in-out;
+        }
+
+        .branch.active {
+            stroke-dashoffset: 0;
+        }
+
+        .video-node {
+            position: absolute;
+            width: 180px;
+            aspect-ratio: 16/9;
+            background: #000;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+            opacity: 0;
+            transform: scale(0.5);
+            transition: all 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            z-index: 10;
+        }
+
+        .video-node.visible {
+            opacity: 1;
+            transform: scale(1);
+        }
+
+        .video-node video {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .video-node .label {
+            position: absolute;
+            bottom: 0;
+            width: 100%;
+            background: rgba(255,255,255,0.9);
+            font-size: 10px;
+            font-weight: 700;
+            text-align: center;
+            padding: 4px 0;
+        }
+
+        #start-growth {
+            display: block;
+            margin: 20px auto;
+            padding: 12px 30px;
+            background: var(--tree-color);
+            color: white;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            font-weight: 600;
+            box-shadow: 0 4px 15px rgba(0,122,255,0.3);
+        }
+
+        /* 项目页面样式 */
         .container {
             max-width: 1400px;
             margin: 0 auto;
@@ -199,6 +276,44 @@
 </head>
 <body>
 
+<!-- 树生长动画部分 -->
+<h2 style="text-align: center; margin-top: 40px; font-weight: 800; font-size: 32px;">Tree-Learning Evolution</h2>
+<button id="start-growth">Start Learning Evolution</button>
+
+<div class="tree-container" id="tree-stage">
+    <svg width="1200" height="1200" style="position:absolute; top:0; left:50%; transform:translateX(-50%);">
+        <path id="path-root" class="branch" d="M 600,1100 L 600,950" />
+        <path class="branch l1-path" d="M 600,850 L 300,700" />
+        <path class="branch l1-path" d="M 600,850 L 450,700" />
+        <path class="branch l1-path" d="M 600,850 L 600,700" />
+        <path class="branch l1-path" d="M 600,850 L 750,700" />
+        <path class="branch l1-path" d="M 600,850 L 900,700" />
+        <path class="branch l2-path-left" d="M 300,600 L 200,450" />
+        <path class="branch l2-path-right" d="M 900,600 L 1000,450" />
+        <path class="branch l2-path-center" d="M 600,600 L 500,450" />
+        <path class="branch l2-path-center" d="M 600,600 L 600,450" />
+        <path class="branch l2-path-center" d="M 600,600 L 700,450" />
+    </svg>
+
+    <div id="node-0" class="video-node" style="left: calc(50% - 90px); top: 850px;">
+        <video id="vid-0"><source src="moe0.webm" type="video/webm"></video>
+        <div class="label">1.1 Walk (Root)</div>
+    </div>
+
+    <div class="video-node l1-node" style="left: 210px; top: 600px;"><video id="vid-1"><source src="moe1.webm" type="video/webm"></video><div class="label">1.2 Run</div></div>
+    <div class="video-node l1-node" style="left: 360px; top: 600px;"><video id="vid-2"><source src="moe2.webm" type="video/webm"></video><div class="label">1.3 Climb</div></div>
+    <div id="node-center-l1" class="video-node l1-node" style="left: 510px; top: 600px;"><video id="vid-3"><source src="moe3.webm" type="video/webm"></video><div class="label">1.4 Squat</div></div>
+    <div class="video-node l1-node" style="left: 660px; top: 600px;"><video id="vid-4"><source src="moe4.mp4" type="video/mp4"></video><div class="label">1.5 Jump</div></div>
+    <div class="video-node l1-node" style="left: 810px; top: 600px;"><video id="vid-5"><source src="moe5.mp4" type="video/mp4"></video><div class="label">1.6 One-leg stand</div></div>
+
+    <div class="video-node l2-node" style="left: 110px; top: 350px;"><video id="vid-6"><source src="moe6.mp4" type="video/mp4"></video><div class="label">1.7 Kick</div></div>
+    <div class="video-node l2-node" style="left: 410px; top: 350px;"><video id="vid-7"><source src="moe7.webm" type="video/webm"></video><div class="label">1.8 Down</div></div>
+    <div class="video-node l2-node" style="left: 510px; top: 350px;"><video id="vid-8"><source src="moe8.mp4" type="video/mp4"></video><div class="label">1.9 Push up</div></div>
+    <div class="video-node l2-node" style="left: 610px; top: 350px;"><video id="vid-9"><source src="moe9.mp4" type="video/mp4"></video><div class="label">1.10 Crawl</div></div>
+    <div class="video-node l2-node" style="left: 910px; top: 350px;"><video id="vid-10"><source src="moe10.mp4" type="video/mp4"></video><div class="label">1.11 Stand up</div></div>
+</div>
+
+<!-- 项目主页部分 -->
 <div class="container">
     <header>
         <h1>Tree Learning: A Multi-Skill Continual Learning Framework for Humanoid Robots</h1>
@@ -298,6 +413,58 @@
         © 2026 Tree-Learning Project Team | Research for Embodied Intelligence
     </footer>
 </div>
+
+<script>
+    const startBtn = document.getElementById('start-growth');
+    
+    startBtn.addEventListener('click', () => {
+        startBtn.style.display = 'none';
+        growStep1();
+    });
+
+    function growStep1() {
+        document.getElementById('path-root').classList.add('active');
+        setTimeout(() => {
+            const node0 = document.getElementById('node-0');
+            node0.classList.add('visible');
+            const vid0 = document.getElementById('vid-0');
+            vid0.play();
+            vid0.onended = growStep2;
+        }, 1500);
+    }
+
+    function growStep2() {
+        const branches = document.querySelectorAll('.l1-path');
+        branches.forEach(b => b.classList.add('active'));
+
+        setTimeout(() => {
+            const nodes = document.querySelectorAll('.l1-node');
+            nodes.forEach((n, i) => {
+                setTimeout(() => {
+                    n.classList.add('visible');
+                    const v = n.querySelector('video');
+                    v.play();
+                    if(i === 2) v.onended = growStep3; 
+                }, i * 200);
+            });
+        }, 1500);
+    }
+
+    function growStep3() {
+        const branches = document.querySelectorAll('.l2-path-left, .l2-path-right, .l2-path-center');
+        branches.forEach(b => b.classList.add('active'));
+
+        setTimeout(() => {
+            const nodes = document.querySelectorAll('.l2-node');
+            nodes.forEach((n, i) => {
+                setTimeout(() => {
+                    n.classList.add('visible');
+                    n.querySelector('video').play();
+                }, i * 200);
+            });
+        }, 1500);
+    }
+</script>
 
 </body>
 </html>
