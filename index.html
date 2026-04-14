@@ -4,7 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Tree-Learning | Project Page</title>
-    <!-- 引入高级学术字体 Inter -->
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <style>
         :root {
@@ -37,7 +36,6 @@
             padding: 80px 20px;
         }
 
-        /* --- 标题与按钮区 --- */
         header {
             text-align: center;
             margin-bottom: 60px;
@@ -46,7 +44,7 @@
         header h1 {
             font-size: 48px;
             font-weight: 800;
-            letter-spacing: -0.04em; /* 紧凑字间距增加高级感 */
+            letter-spacing: -0.04em;
             line-height: 1.1;
             background: var(--title-gradient);
             -webkit-background-clip: text;
@@ -84,7 +82,6 @@
             background: #000;
         }
 
-        /* --- 摘要区 --- */
         .abstract-box {
             max-width: 1050px;
             margin: 0 auto 80px auto;
@@ -114,7 +111,6 @@
             font-weight: 700;
         }
 
-        /* --- 视频通用样式 --- */
         .section-title {
             text-align: center;
             font-size: 34px;
@@ -154,9 +150,6 @@
             color: #515154;
         }
 
-        /* --- 特定布局控制 --- */
-
-        /* 1. 主视频全屏 */
         .hero-video {
             width: 100%;
             border-radius: 28px;
@@ -165,17 +158,15 @@
             margin-bottom: 80px;
         }
 
-        /* 2. 第一行：居中1个 */
         .row-center {
             display: flex;
             justify-content: center;
             margin-bottom: 25px;
         }
         .row-center .video-card {
-            width: 38%; /* 使第一个视频稍微突出 */
+            width: 38%;
         }
 
-        /* 3. 5列网格 */
         .row-5-grid {
             display: grid;
             grid-template-columns: repeat(5, 1fr);
@@ -183,7 +174,6 @@
             margin-bottom: 20px;
         }
 
-        /* 4. 最后一行：3列网格 */
         .row-3-grid {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
@@ -199,7 +189,6 @@
             font-weight: 500;
         }
 
-        /* 响应式 */
         @media (max-width: 1024px) {
             header h1 { font-size: 34px; }
             .row-5-grid { grid-template-columns: repeat(2, 1fr); }
@@ -220,7 +209,6 @@
         </div>
     </header>
 
-    <!-- 摘要 -->
     <div class="abstract-box">
         <h2>Abstract</h2>
         <div class="abstract-text">
@@ -228,7 +216,6 @@
         </div>
     </div>
 
-    <!-- 1. 全屏主视频 -->
     <div class="hero-video">
         <video controls>
             <source src="Tree-learning.mp4" type="video/mp4">
@@ -237,7 +224,6 @@
 
     <h2 class="section-title">Action Library</h2>
 
-    <!-- 2. 第一行：居中 (1.1 Walk) -->
     <div class="row-center">
         <div class="video-card">
             <video playsinline autoplay muted loop><source src="moe0.webm" type="video/webm"></video>
@@ -245,7 +231,6 @@
         </div>
     </div>
 
-    <!-- 3. 第二行：5个 -->
     <div class="row-5-grid">
         <div class="video-card">
             <video playsinline autoplay muted loop><source src="moe1.webm" type="video/webm"></video>
@@ -269,7 +254,6 @@
         </div>
     </div>
 
-    <!-- 4. 第三行：5个 -->
     <div class="row-5-grid">
         <div class="video-card">
             <video playsinline autoplay muted loop><source src="moe6.mp4" type="video/mp4"></video>
@@ -295,7 +279,6 @@
 
     <h2 class="section-title">Downstream Applications</h2>
 
-    <!-- 5. 最后一行：3个应用场景 -->
     <div class="row-3-grid">
         <div class="video-card">
             <video controls muted loop><source src="auto game.mp4" type="video/mp4"></video>
