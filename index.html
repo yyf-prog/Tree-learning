@@ -106,6 +106,19 @@
             background: #000;
         }
 
+        /* --- 顶部横幅图 --- */
+        .banner-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+        .banner-img {
+            width: 100%;
+            border-radius: 16px;
+            overflow: hidden;
+        }
+
         /* --- 视频+摘要 并排布局 --- */
         .hero-section {
             display: grid;
@@ -239,6 +252,7 @@
             .title-main { font-size: 48px; }
             .title-sub { font-size: 22px; }
             .hero-section { grid-template-columns: 1fr; }
+            .banner-row { grid-template-columns: 1fr; }
             .row-5-grid { grid-template-columns: repeat(2, 1fr); }
             .row-center .video-card { width: 100%; }
             .row-2-grid { grid-template-columns: 1fr; }
@@ -263,6 +277,12 @@
             <a href="#" class="btn" style="background:var(--primary-color)">🎬 Full Video</a>
         </div>
     </header>
+
+    <!-- 顶部横幅图 -->
+    <div class="banner-row">
+        <img class="banner-img" src="2.gif" alt="Animated Banner">
+        <img class="banner-img" src="1.png" alt="Static Banner">
+    </div>
 
     <!-- 视频+摘要 并排 -->
     <div class="hero-section">
